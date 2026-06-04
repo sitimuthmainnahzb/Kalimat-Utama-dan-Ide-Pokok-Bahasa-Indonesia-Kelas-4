@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPI Bahasa Indonesia Kelas 4 - SDN Tegalrejo 3</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Fredoka One & Poppins untuk tampilan ramah anak -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Marked JS untuk merender Markdown dari AI -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0fdf4; /* Light pastel green */
+        }
+        .font-kids {
+            font-family: 'Fredoka One', cursive;
+        }
+        .bubble-btn {
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .bubble-btn:hover {
+            transform: scale(1.05) translateY(-2px);
+        }
+        .card-shadow {
+            box-shadow: 0 8px 0px #cbd5e1;
+        }
+        .card-shadow-primary {
+            box-shadow: 0 8px 0px #1e3a8a;
+        }
+        .card-shadow-success {
+            box-shadow: 0 8px 0px #15803d;
+        }
+        .card-shadow-purple {
+            box-shadow: 0 8px 0px #c084fc;
+        }
+        /* Confetti & Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating-element {
+            animation: float 3s ease-in-out infinite;
+        }
+        /* Custom scrollbar for AI stream output */
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <!-- HEADER / NAVIGASI UTAMA -->
+    <header class="bg-gradient-to-r from-teal-500 to-emerald-600 text-white p-4 shadow-md sticky top-0 z-50">
+        <div class="container mx-auto flex flex-col lg:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-3">
+                <div class="bg-white p-2 rounded-full shadow-inner floating-element">
+                    <img src="https://img.icons8.com/fluency/48/000000/owl.png" alt="Logo Pintar" class="w-10 h-10">
+                </div>
+                <div>
+                    <h1 class="font-kids text-xl md:text-2xl tracking-wide">DETEKTIF BAHASA</h1>
+                    <p class="text-xs text-teal-100 font-semibold">SDN Tegalrejo 3 Yogyakarta - Kelas IV</p>
+                </div>
+            </div>
+            <!-- Menu Tabs -->
+            <nav class="flex flex-wrap gap-2 mt-2 lg:mt-0 justify-center">
+                <button onclick="switchTab('home')" id="tab-home" class="nav-tab px-4 py-2 rounded-full bg-white text-teal-700 font-bold shadow-sm text-sm transition-all">
+                    <i class="fa-solid fa-house mr-1"></i> Beranda
+                </button>
+                <button onclick="switchTab('materi')" id="tab-materi" class="nav-tab px-4 py-2 rounded-full hover:bg-teal-600 text-white font-bold text-sm transition-all">
+                    <i class="fa-solid fa-book-open mr-1"></i> Materi
+                </button>
+                <button onclick="switchTab('game')" id="tab-game" class="nav-tab px-4 py-2 rounded-full hover:bg-teal-600 text-white font-bold text-sm transition-all">
+                    <i class="fa-solid fa-magnifying-glass mr-1"></i> Detektif Game
+                </button>
+                <button onclick="switchTab('ai-lab')" id="tab-ai-lab" class="nav-tab px-4 py-2 rounded-full hover:bg-teal-600 text-white font-bold text-sm transition-all">
+                    <i class="fa-solid fa-robot mr-1"></i> Asisten AI
+                </button>
+                <button onclick="switchTab('kuis')" id="tab-kuis" class="nav-tab px-4 py-2 rounded-full hover:bg-teal-600 text-white font-bold text-sm transition-all">
+                    <i class="fa-solid fa-graduation-cap mr-1"></i> Kuis Evaluasi
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- KONTEN UTAMA -->
+    <main class="container mx-auto max-w-4xl p-4 flex-grow my-4">
+
+        <!-- TAB 1: BERANDA -->
+        <section id="content-home" class="tab-content block">
+            <div class="bg-white rounded-3xl p-6 md:p-8 border-4 border-teal-400 card-shadow relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-yellow-200 rounded-full opacity-50 blur-xl"></div>
+                <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-teal-200 rounded-full opacity-50 blur-xl"></div>
+
+                <div class="text-center relative z-10">
+                    <span class="bg-teal-100 text-teal-800 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">Mata Pelajaran: Bahasa Indonesia</span>
+                    <h2 class="font-kids text-3xl md:text-5xl text-teal-700 mt-4 mb-2 leading-tight">Ayo Menjadi Detektif Membaca!</h2>
+                    <p class="text-gray-600 text-base md:text-lg mb-6 max-w-xl mx-auto">
+                        Halo Sobat Pintar dari <strong>SDN Tegalrejo 3 Yogyakarta</strong>! Mari belajar menemukan <strong>Kalimat Utama</strong> dan <strong>Ide Pokok</strong> bacaan dengan cara yang seru, menyenangkan, dan dibantu oleh kecerdasan buatan (AI).
+                    </p>
+
+                    <!-- Ilustrasi Maskot -->
+                    <div class="my-8 flex justify-center">
+                        <div class="relative bg-teal-50 p-6 rounded-2xl border-2 border-dashed border-teal-300 max-w-md w-full flex items-center gap-4">
+                            <span class="text-4xl floating-element">🦉</span>
+                            <div class="text-left">
+                                <p class="text-sm font-semibold text-teal-800">Kenalkan, Aku Piko!</p>
+                                <p class="text-xs text-gray-600 mt-1">Aku asisten burung hantu pintarmu. Kamu bisa memintaku membuatkan petualangan paragraf baru atau membedah tugas sekolahmu di tab <strong>Asisten AI</strong>!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tombol Mulai -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+                        <button onclick="switchTab('materi')" class="bubble-btn bg-yellow-400 hover:bg-yellow-500 text-teal-900 font-bold px-4 py-3 rounded-2xl text-base flex items-center justify-center gap-2 border-b-4 border-yellow-600">
+                            <i class="fa-solid fa-play"></i> Mulai Belajar
+                        </button>
+                        <button onclick="switchTab('ai-lab')" class="bubble-btn bg-purple-500 hover:bg-purple-600 text-white font-bold px-4 py-3 rounded-2xl text-base flex items-center justify-center gap-2 border-b-4 border-purple-700">
+                            <i class="fa-solid fa-robot"></i> Coba Asisten AI
+                        </button>
+                        <button onclick="switchTab('game')" class="bubble-btn bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-4 py-3 rounded-2xl text-base flex items-center justify-center gap-2 border-b-4 border-emerald-700">
+                            <i class="fa-solid fa-gamepad"></i> Detektif Game
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: MATERI -->
+        <section id="content-materi" class="tab-content hidden">
+            <!-- Navigation Sub-materi -->
+            <div class="flex gap-2 mb-4 overflow-x-auto pb-1">
+                <button onclick="switchMateri(1)" id="btn-mat-1" class="materi-tab px-4 py-2 bg-teal-600 text-white font-bold rounded-lg text-sm shrink-0">1. Kalimat Utama & Penjelas</button>
+                <button onclick="switchMateri(2)" id="btn-mat-2" class="materi-tab px-4 py-2 bg-white text-gray-700 hover:bg-gray-100 font-bold rounded-lg text-sm shrink-0 shadow-sm">2. Apa itu Ide Pokok?</button>
+                <button onclick="switchMateri(3)" id="btn-mat-3" class="materi-tab px-4 py-2 bg-white text-gray-700 hover:bg-gray-100 font-bold rounded-lg text-sm shrink-0 shadow-sm">3. Cara Menemukan</button>
+            </div>
+
+            <!-- Sub Materi 1 -->
+            <div id="sub-materi-1" class="materi-panel block bg-white rounded-3xl p-6 border-4 border-teal-400 card-shadow">
+                <h3 class="font-kids text-2xl text-teal-700 mb-4"><i class="fa-solid fa-file-invoice mr-2"></i>Kalimat Utama & Kalimat Penjelas</h3>
+                <p class="text-gray-700 mb-4 text-sm md:text-base leading-relaxed">
+                    Setiap paragraf di dalam bacaan seperti sebuah rumah. Rumah memiliki pondasi/tiang utama (<strong>Kalimat Utama</strong>) dan dinding-dinding penghias (<strong>Kalimat Penjelas</strong>).
+                </p>
+
+                <!-- Interactive Card Info -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+                    <div class="bg-blue-50 p-4 rounded-2xl border-2 border-blue-300">
+                        <span class="text-xs bg-blue-200 text-blue-800 font-bold px-2 py-1 rounded">🏠 Pondasi Utama</span>
+                        <h4 class="font-bold text-blue-900 mt-2 text-sm">Kalimat Utama</h4>
+                        <p class="text-xs text-gray-600 mt-1">Kalimat yang berisi ide dasar atau pokok pembicaraan dalam sebuah paragraf. Letaknya bisa di awal (deduktif) atau di akhir (induktif).</p>
+                    </div>
+                    <div class="bg-amber-50 p-4 rounded-2xl border-2 border-amber-300">
+                        <span class="text-xs bg-amber-200 text-amber-800 font-bold px-2 py-1 rounded">🧱 Dinding Pendukung</span>
+                        <h4 class="font-bold text-amber-900 mt-2 text-sm">Kalimat Penjelas</h4>
+                        <p class="text-xs text-gray-600 mt-1">Kalimat-kalimat yang menjelaskan, merinci, atau memberikan bukti/contoh tambahan untuk mendukung kalimat utama.</p>
+                    </div>
+                </div>
+
+                <!-- Interactive Text Box -->
+                <div class="bg-teal-50 p-4 rounded-2xl border-2 border-teal-200 mt-4">
+                    <p class="text-xs font-bold text-teal-800 mb-2">💡 CONTOH PARAGRAF (Sentuh kalimat untuk melihat perannya!):</p>
+                    <div class="bg-white p-4 rounded-xl shadow-inner text-sm md:text-base leading-loose">
+                        <span class="cursor-pointer bg-blue-100 hover:bg-blue-200 px-1 rounded font-semibold text-blue-800 transition-colors" onclick="showExplanation('utama')">
+                            Yogyakarta merupakan kota wisata yang sangat terkenal di Indonesia. 🔍
+                        </span>
+                        <span class="cursor-pointer bg-amber-50 hover:bg-amber-100 px-1 rounded text-amber-800 transition-colors" onclick="showExplanation('penjelas1')">
+                            Setiap tahun, ribuan turis dalam dan luar negeri berlibur ke sini.
+                        </span>
+                        <span class="cursor-pointer bg-amber-50 hover:bg-amber-100 px-1 rounded text-amber-800 transition-colors" onclick="showExplanation('penjelas2')">
+                            Kota ini memiliki banyak destinasi menarik seperti Malioboro, Keraton, dan Candi Prambanan.
+                        </span>
+                    </div>
+                    <div id="materi-explanation" class="mt-3 p-3 bg-teal-100 text-teal-900 text-xs rounded-xl font-medium min-h-[40px] flex items-center justify-center text-center">
+                        Silakan klik salah satu kalimat di atas untuk melihat penjelasannya!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sub Materi 2 -->
+            <div id="sub-materi-2" class="materi-panel hidden bg-white rounded-3xl p-6 border-4 border-teal-400 card-shadow">
+                <h3 class="font-kids text-2xl text-teal-700 mb-4"><i class="fa-solid fa-lightbulb mr-2"></i>Apa itu Ide Pokok?</h3>
+                <p class="text-gray-700 mb-4 text-sm md:text-base">
+                    <strong>Ide Pokok</strong> (sering disebut juga gagasan pokok atau gagasan utama) adalah <strong>inti atau pokok permasalahan</strong> dari suatu paragraf. 
+                </p>
+
+                <div class="bg-amber-50 p-4 rounded-2xl border-l-4 border-amber-500 my-4 text-sm">
+                    <p class="font-semibold text-amber-900"><i class="fa-solid fa-triangle-exclamation mr-1"></i>PENTING DIINGAT!</p>
+                    <p class="text-amber-800 mt-1">Ide pokok biasanya lebih ringkas dari kalimat utama. Ide pokok disimpulkan dari kalimat utama paragraf tersebut.</p>
+                </div>
+
+                <!-- Perbandingan Tabel -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs md:text-sm border-collapse">
+                        <thead>
+                            <tr class="bg-teal-100 text-teal-800 border-b-2 border-teal-200">
+                                <th class="p-3 font-semibold">Ciri Kalimat Utama</th>
+                                <th class="p-3 font-semibold">Ciri Ide Pokok</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100 text-gray-700">
+                            <tr>
+                                <td class="p-3">Berbentuk satu kalimat utuh (ada subjek, predikat, dst.).</td>
+                                <td class="p-3">Berbentuk frasa atau inti kalimat saja (lebih ringkas).</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3">Tertulis jelas di dalam teks (tersurat).</td>
+                                <td class="p-3">Bisa tertulis jelas atau harus kita simpulkan sendiri (tersirat).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Sub Materi 3 -->
+            <div id="sub-materi-3" class="materi-panel hidden bg-white rounded-3xl p-6 border-4 border-teal-400 card-shadow">
+                <h3 class="font-kids text-2xl text-teal-700 mb-4"><i class="fa-solid fa-key mr-2"></i>3 Langkah Menemukan Ide Pokok</h3>
+                
+                <div class="space-y-4">
+                    <div class="flex gap-4 items-start">
+                        <div class="bg-teal-100 text-teal-800 font-bold w-8 h-8 rounded-full flex items-center justify-center shrink-0">1</div>
+                        <div>
+                            <h4 class="font-semibold text-gray-950 text-sm md:text-base">Baca Seluruh Paragraf</h4>
+                            <p class="text-xs md:text-sm text-gray-600">Bacalah kalimat demi kalimat dengan teliti dan konsentrasi dari awal sampai akhir paragraf.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <div class="bg-teal-100 text-teal-800 font-bold w-8 h-8 rounded-full flex items-center justify-center shrink-0">2</div>
+                        <div>
+                            <h4 class="font-semibold text-gray-950 text-sm md:text-base">Temukan Kalimat Utama</h4>
+                            <p class="text-xs md:text-sm text-gray-600">Cari kalimat kunci yang menjadi induk atau dibahas oleh kalimat-kalimat penjelas lainnya.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <div class="bg-teal-100 text-teal-800 font-bold w-8 h-8 rounded-full flex items-center justify-center shrink-0">3</div>
+                        <div>
+                            <h4 class="font-semibold text-gray-950 text-sm md:text-base">Ringkas Menjadi Ide Pokok</h4>
+                            <p class="text-xs md:text-sm text-gray-600">Ambil inti sari dari kalimat utama tersebut untuk dijadikan ide pokok.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 text-center">
+                    <button onclick="switchTab('game')" class="bubble-btn px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-2xl text-sm shadow-md inline-flex items-center gap-2">
+                        <i class="fa-solid fa-gamepad"></i> Asah Kemampuan di Detektif Game
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: GAME INTERAKTIF -->
+        <section id="content-game" class="tab-content hidden">
+            <div class="bg-white rounded-3xl p-6 border-4 border-emerald-400 card-shadow">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b pb-4 mb-4 gap-2">
+                    <div>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Permainan Edukasi</span>
+                        <h3 class="font-kids text-2xl text-emerald-700 mt-1"><i class="fa-solid fa-user-secret mr-2"></i>Misi Detektif: Temukan Kalimat Utama!</h3>
+                    </div>
+                    <div class="flex items-center gap-2 bg-yellow-100 px-3 py-1.5 rounded-full border border-yellow-300">
+                        <span class="text-yellow-600 font-bold text-sm"><i class="fa-solid fa-star"></i> Skor Detektif:</span>
+                        <span id="game-score" class="font-kids text-yellow-800 text-lg">0</span>
+                    </div>
+                </div>
+
+                <div id="game-box">
+                    <div class="bg-slate-50 p-4 rounded-2xl border-2 border-slate-200 mb-4">
+                        <div class="flex justify-between text-xs font-bold text-gray-500 mb-2">
+                            <span>LOKASI MISI: <span id="game-location" class="text-teal-700">Taman Pintar</span></span>
+                            <span>Misi ke: <span id="game-level">1</span>/3</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-3 bg-blue-50 p-2 rounded border border-blue-200">
+                            <strong>🕵️‍♂️ Instruksi Detektif:</strong> Klik (Sentuh) pada satu kalimat di bawah ini yang merupakan <strong>Kalimat Utama</strong> paragraf tersebut!
+                        </p>
+                        
+                        <!-- Area Paragraf Game -->
+                        <div id="game-paragraph" class="bg-white p-4 rounded-xl border border-gray-200 shadow-inner text-sm md:text-base leading-relaxed space-y-1">
+                            <!-- JS will inject clickable sentences here -->
+                        </div>
+                    </div>
+
+                    <!-- Kotak Feedback Jawaban -->
+                    <div id="game-feedback" class="hidden p-4 rounded-xl text-center text-sm font-semibold transition-all mb-4">
+                    </div>
+
+                    <!-- Kontrol Lanjut Game -->
+                    <div class="flex justify-end">
+                        <button id="btn-next-game" onclick="nextGameLevel()" class="hidden bubble-btn px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl text-sm shadow-md flex items-center gap-2">
+                            Misi Selanjutnya <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Layar Berhasil Game -->
+                <div id="game-success-screen" class="hidden text-center py-8">
+                    <span class="text-6xl">🏆</span>
+                    <h4 class="font-kids text-3xl text-emerald-700 mt-4">Detektif Hebat Terverifikasi!</h4>
+                    <p class="text-gray-600 mt-2 max-w-md mx-auto text-sm">
+                        Luar biasa! Kamu berhasil menuntaskan semua misi di sekitar Yogyakarta dan menemukan semua kalimat utama dengan sempurna.
+                    </p>
+                    <div class="mt-6 flex justify-center gap-3">
+                        <button onclick="resetGame()" class="px-5 py-2.5 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold rounded-xl text-sm">
+                            <i class="fa-solid fa-rotate-left mr-1"></i> Ulangi Game
+                        </button>
+                        <button onclick="switchTab('kuis')" class="px-5 py-2.5 bg-yellow-400 hover:bg-yellow-500 text-teal-900 font-bold rounded-xl text-sm">
+                            Ikuti Kuis Ujian <i class="fa-solid fa-graduation-cap ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: ASISTEN AI & LAB DETEKTIF -->
+        <section id="content-ai-lab" class="tab-content hidden">
+            <div class="bg-white rounded-3xl p-6 border-4 border-purple-400 card-shadow">
+                
+                <!-- AI Section Header -->
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b pb-4 mb-6 gap-2">
+                    <div>
+                        <span class="bg-purple-100 text-purple-800 text-xs font-bold px-2.5 py-1.5 rounded-full uppercase tracking-wider">
+                            <i class="fa-solid fa-robot mr-1"></i> Laboratorium Detektif AI
+                        </span>
+                        <h3 class="font-kids text-2xl text-purple-700 mt-1.5">Teknologi Gemini Pintar</h3>
+                    </div>
+                    <div class="text-xs text-purple-600 font-semibold bg-purple-50 px-3 py-1 rounded-lg border border-purple-200">
+                        Piko AI - Aktif 🦉
+                    </div>
+                </div>
+
+                <!-- Sub-Navigation for AI -->
+                <div class="flex gap-2 mb-6 border-b pb-3">
+                    <button onclick="switchAiSubTab('generator')" id="btn-ai-gen" class="ai-sub-tab px-4 py-2 bg-purple-600 text-white font-bold rounded-xl text-xs md:text-sm transition-all shadow-sm">
+                        ✨ Misi Kustom AI (Buat Tantangan Baru)
+                    </button>
+                    <button onclick="switchAiSubTab('analyzer')" id="btn-ai-analyze" class="ai-sub-tab px-4 py-2 bg-slate-100 text-slate-700 font-bold rounded-xl text-xs md:text-sm transition-all hover:bg-slate-200">
+                        🦉 Tanya Piko (Bedah Paragrafmu)
+                    </button>
+                </div>
+
+                <!-- SUB-TAB A: GENERATOR GAME DINAMIS AI -->
+                <div id="ai-sub-generator" class="ai-panel block">
+                    <div class="bg-purple-50 p-4 rounded-2xl border-2 border-purple-200 mb-6">
+                        <p class="text-xs md:text-sm text-purple-950 font-semibold leading-relaxed">
+                            <strong>💡 Cara Bermain:</strong> Ketik satu atau dua kata tema kesukaanmu di bawah ini (misalnya: <em>"Batik Jogja"</em>, <em>"Kereta Api Tugu"</em>, atau <em>"Candi Ratu Boko"</em>). Piko AI akan langsung merancang paragraf bacaan baru beserta kuis interaktifnya khusus buat kamu!
+                        </p>
+                    </div>
+
+                    <!-- Input Area -->
+                    <div class="flex flex-col md:flex-row gap-3 mb-6">
+                        <input type="text" id="ai-topic-input" placeholder="Contoh: Andong Malioboro, Gembira Loka..." 
+                               class="flex-grow px-4 py-3 rounded-xl border-2 border-slate-300 focus:border-purple-500 focus:outline-none text-sm font-semibold">
+                        <button onclick="generateCustomAITask()" id="btn-ai-generate" class="bubble-btn bg-purple-600 hover:bg-purple-700 text-white font-bold px-6 py-3 rounded-xl text-sm flex items-center justify-center gap-2 border-b-4 border-purple-800">
+                            <span id="btn-ai-gen-text"><i class="fa-solid fa-wand-magic-sparkles"></i> Racik Tantangan</span>
+                            <div id="ai-gen-spinner" class="hidden animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent"></div>
+                        </button>
+                    </div>
+
+                    <!-- Dynamic AI Game Box (Generated Level) -->
+                    <div id="ai-generated-game-box" class="hidden bg-slate-50 p-4 rounded-2xl border-2 border-slate-200 transition-all">
+                        <div class="flex justify-between items-center text-xs font-bold text-slate-500 mb-3 border-b pb-2">
+                            <span class="text-purple-700"><i class="fa-solid fa-puzzle-piece"></i> MISI AI KUSTOM BERHASIL DIBUAT!</span>
+                            <span class="bg-purple-100 text-purple-800 px-2 py-0.5 rounded-full">Level AI</span>
+                        </div>
+                        <p class="text-xs text-slate-600 mb-3 bg-white p-2 rounded border border-slate-200">
+                            <strong>🕵️‍♂️ Misi Detektif:</strong> Klik/Sentuh pada kalimat yang menurutmu merupakan <strong>Kalimat Utama</strong>!
+                        </p>
+
+                        <!-- The dynamic paragraph from LLM -->
+                        <div id="ai-game-paragraph" class="bg-white p-4 rounded-xl border border-gray-200 shadow-inner text-sm md:text-base leading-relaxed space-y-1.5">
+                            <!-- Sentences go here dynamically -->
+                        </div>
+
+                        <!-- AI Feedback box -->
+                        <div id="ai-game-feedback" class="hidden mt-4 p-4 rounded-xl text-center text-sm font-semibold transition-all"></div>
+
+                        <!-- Main Idea explanation (Shown after answering) -->
+                        <div id="ai-game-explanation-card" class="hidden mt-4 bg-yellow-50 p-4 rounded-xl border border-yellow-200">
+                            <p class="text-xs font-bold text-yellow-800 uppercase mb-1">💡 Penjelasan Ide Pokok dari Piko AI:</p>
+                            <p id="ai-game-explanation-text" class="text-sm text-slate-700 leading-relaxed"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUB-TAB B: DETEKTIF TANYA PIKO (Text Analyzer) -->
+                <div id="ai-sub-analyzer" class="ai-panel hidden">
+                    <div class="bg-teal-50 p-4 rounded-2xl border-2 border-teal-200 mb-6">
+                        <p class="text-xs md:text-sm text-teal-950 font-semibold leading-relaxed">
+                            <strong>🦉 Halo Sobat Detektif!</strong> Punya teks paragraf dari buku sekolah yang sulit kamu cari kalimat utama atau ide pokoknya? Tempelkan teksnya di sini, biar Piko bantu analisis dalam sekejap!
+                        </p>
+                    </div>
+
+                    <!-- Chat/Text Input area -->
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 uppercase mb-2">Tempel Paragraf di Sini:</label>
+                            <textarea id="ai-text-to-analyze" rows="4" placeholder="Contoh: Candi Prambanan adalah candi Hindu terbesar di Indonesia..." 
+                                      class="w-full px-4 py-3 rounded-xl border-2 border-slate-300 focus:border-teal-500 focus:outline-none text-sm font-medium"></textarea>
+                        </div>
+
+                        <div class="flex justify-end">
+                            <button onclick="analyzeTextWithAI()" id="btn-ai-analyze-submit" class="bubble-btn bg-teal-600 hover:bg-teal-700 text-white font-bold px-6 py-3.5 rounded-xl text-sm flex items-center gap-2 border-b-4 border-teal-800">
+                                <span id="btn-ai-analyze-text"><i class="fa-solid fa-magnifying-glass-chart"></i> Bedah dengan Piko AI</span>
+                                <div id="ai-analyze-spinner" class="hidden animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent"></div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Analysis Output Presentation -->
+                    <div id="ai-analysis-output-container" class="hidden mt-6 bg-slate-50 p-5 rounded-2xl border-2 border-slate-200">
+                        <div class="flex items-center gap-2 text-teal-700 border-b pb-2 mb-3">
+                            <span class="text-2xl">🦉</span>
+                            <span class="font-kids text-lg">Hasil Bedah Paragraf Piko AI</span>
+                        </div>
+                        <div id="ai-analysis-markdown" class="prose max-w-none text-sm md:text-base leading-relaxed text-slate-800 custom-scroll overflow-y-auto max-h-[350px]">
+                            <!-- Generated markdown content will be rendered here -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TAB 5: KUIS EVALUASI -->
+        <section id="content-kuis" class="tab-content hidden">
+            <div class="bg-white rounded-3xl p-6 border-4 border-blue-400 card-shadow">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b pb-4 mb-4 gap-2">
+                    <div>
+                        <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Evaluasi Mandiri</span>
+                        <h3 class="font-kids text-2xl text-blue-700 mt-1"><i class="fa-solid fa-file-signature mr-2"></i>Uji Kemampuanmu!</h3>
+                    </div>
+                    <div class="text-xs text-gray-500 font-semibold">
+                        Soal: <span id="quiz-progress">1/5</span>
+                    </div>
+                </div>
+
+                <!-- Area Pertanyaan Kuis -->
+                <div id="quiz-question-box">
+                    <div class="bg-slate-50 p-4 rounded-2xl border-2 border-slate-200 mb-4">
+                        <span class="text-xs bg-teal-100 text-teal-800 font-bold px-2 py-1 rounded mb-2 inline-block">Bacaan Kuis:</span>
+                        <div id="quiz-text" class="bg-white p-4 rounded-xl shadow-inner text-sm leading-relaxed text-gray-700 font-medium">
+                            <!-- Text will be loaded by JS -->
+                        </div>
+                    </div>
+
+                    <div id="quiz-question-text" class="font-bold text-gray-800 text-sm md:text-base mb-4">
+                        <!-- Question dynamic -->
+                    </div>
+
+                    <!-- Pilihan Ganda -->
+                    <div id="quiz-options" class="space-y-3">
+                        <!-- Dynamic options will be injected -->
+                    </div>
+
+                    <div class="flex justify-between items-center mt-6">
+                        <span id="quiz-feedback-text" class="text-sm font-semibold text-teal-700"></span>
+                        <button id="btn-next-quiz" onclick="nextQuiz()" class="hidden bubble-btn px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm shadow-md flex items-center gap-2">
+                            Pertanyaan Berikutnya <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Hasil Akhir Kuis -->
+                <div id="quiz-result-box" class="hidden text-center py-8">
+                    <span id="result-emoji" class="text-6xl">🎉</span>
+                    <h4 class="font-kids text-3xl text-blue-700 mt-4">Kuis Selesai!</h4>
+                    <p class="text-gray-600 mt-2 text-sm">Nilai yang berhasil kamu raih adalah:</p>
+                    <div class="font-kids text-6xl text-amber-500 my-4" id="quiz-final-score">100</div>
+                    
+                    <p id="quiz-evaluation-message" class="text-gray-600 max-w-md mx-auto text-xs md:text-sm mb-6"></p>
+
+                    <div class="flex justify-center gap-3">
+                        <button onclick="resetQuiz()" class="px-5 py-2.5 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold rounded-xl text-sm">
+                            <i class="fa-solid fa-rotate-left mr-1"></i> Ulang Kuis
+                        </button>
+                        <button onclick="switchTab('home')" class="px-5 py-2.5 bg-teal-500 hover:bg-teal-600 text-white font-bold rounded-xl text-sm">
+                            Kembali ke Beranda <i class="fa-solid fa-house ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-100 border-t border-slate-200 py-4 text-center text-xs text-gray-500">
+        <div class="container mx-auto px-4">
+            <p class="font-semibold">&copy; 2026 Media Pembelajaran Interaktif Bahasa Indonesia Kelas IV</p>
+            <p class="mt-1">Dibuat khusus untuk Pembelajaran Aktif di SDN Tegalrejo 3, Kota Yogyakarta</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT LOGIC -->
+    <script>
+        // --- WEB AUDIO SYNTHESIZER FOR SOUND EFFECTS ---
+        function playSound(type) {
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (type === 'correct') {
+                    // Ding ding! (Double sound high pitch)
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(523.25, ctx.currentTime); // C5
+                    osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.15); // E5
+                    gain.gain.setValueAtTime(0.3, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+                    osc.start(ctx.currentTime);
+                    osc.stop(ctx.currentTime + 0.3);
+                } else if (type === 'wrong') {
+                    // Buzz/low sound
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(150, ctx.currentTime); 
+                    osc.frequency.exponentialRampToValueAtTime(100, ctx.currentTime + 0.3);
+                    gain.gain.setValueAtTime(0.4, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.35);
+                    osc.start(ctx.currentTime);
+                    osc.stop(ctx.currentTime + 0.35);
+                } else if (type === 'success') {
+                    // Win fanfare
+                    const notes = [261.63, 329.63, 392.00, 523.25]; // C4, E4, G4, C5
+                    notes.forEach((freq, idx) => {
+                        const noteOsc = ctx.createOscillator();
+                        const noteGain = ctx.createGain();
+                        noteOsc.connect(noteGain);
+                        noteGain.connect(ctx.destination);
+                        noteOsc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.12);
+                        noteGain.gain.setValueAtTime(0.2, ctx.currentTime + idx * 0.12);
+                        noteGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + idx * 0.12 + 0.3);
+                        noteOsc.start(ctx.currentTime + idx * 0.12);
+                        noteOsc.stop(ctx.currentTime + idx * 0.12 + 0.35);
+                    });
+                }
+            } catch (e) {
+                console.log("Web Audio not supported or blocked by browser gesture.");
+            }
+        }
+
+        // --- NAVIGATION STATE ---
+        function switchTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('block'));
+            
+            // Show active tab
+            const activeTab = document.getElementById(`content-${tabId}`);
+            if(activeTab) {
+                activeTab.classList.remove('hidden');
+                activeTab.classList.add('block');
+            }
+
+            // Style nav buttons
+            document.querySelectorAll('.nav-tab').forEach(el => {
+                el.classList.remove('bg-white', 'text-teal-700', 'shadow-sm');
+                el.classList.add('hover:bg-teal-600', 'text-white');
+            });
+            const activeBtn = document.getElementById(`tab-${tabId}`);
+            if(activeBtn) {
+                activeBtn.classList.remove('hover:bg-teal-600', 'text-white');
+                activeBtn.classList.add('bg-white', 'text-teal-700', 'shadow-sm');
+            }
+
+            // Initialize respective content on load
+            if (tabId === 'game') resetGame();
+            if (tabId === 'kuis') resetQuiz();
+        }
+
+        // --- SUB-MATERI TABS ---
+        function switchMateri(index) {
+            document.querySelectorAll('.materi-panel').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`sub-materi-${index}`).classList.remove('hidden');
+
+            document.querySelectorAll('.materi-tab').forEach(el => {
+                el.classList.remove('bg-teal-600', 'text-white');
+                el.classList.add('bg-white', 'text-gray-700', 'hover:bg-gray-100', 'shadow-sm');
+            });
+            const activeBtn = document.getElementById(`btn-mat-${index}`);
+            activeBtn.classList.remove('bg-white', 'text-gray-700', 'hover:bg-gray-100', 'shadow-sm');
+            activeBtn.classList.add('bg-teal-600', 'text-white');
+        }
+
+        function showExplanation(type) {
+            const expText = document.getElementById('materi-explanation');
+            if (type === 'utama') {
+                expText.innerHTML = "🎯 <strong>Betul sekali!</strong> Kalimat pertama adalah <strong>Kalimat Utama</strong>. Ini mengabarkan inti pokok pembicaraan: 'Yogyakarta kota wisata terkenal'.";
+                expText.className = "mt-3 p-3 bg-blue-100 text-blue-900 text-xs rounded-xl font-medium border border-blue-200";
+            } else if (type === 'penjelas1') {
+                expText.innerHTML = "🧱 Kalimat ini adalah <strong>Kalimat Penjelas ke-1</strong>. Berfungsi menerangkan jumlah wisatawan yang berkunjung ke kota wisata tersebut.";
+                expText.className = "mt-3 p-3 bg-amber-100 text-amber-900 text-xs rounded-xl font-medium border border-amber-200";
+            } else if (type === 'penjelas2') {
+                expText.innerHTML = "🧱 Kalimat ini adalah <strong>Kalimat Penjelas ke-2</strong>. Berfungsi memberikan rincian tempat wisata populer (Malioboro, Keraton, Prambanan) yang ada di Yogyakarta.";
+                expText.className = "mt-3 p-3 bg-amber-100 text-amber-900 text-xs rounded-xl font-medium border border-amber-200";
+            }
+        }
+
+
+        // --- GAME INTERAKTIF DATA & LOGIC ---
+        const gameData = [
+            {
+                location: "Taman Pintar Yogyakarta",
+                sentences: [
+                    "Taman Pintar merupakan tempat wisata edukasi yang sangat digemari anak-anak di Yogyakarta.",
+                    "Di tempat ini, para siswa dapat bermain sekaligus belajar ilmu pengetahuan alam yang menarik.",
+                    "Berbagai wahana seperti gedung oval, planetarium, dan zona air siap menyambut kedatangan para pengunjung.",
+                    "Oleh karena itu, banyak sekolah di luar kota yang menjadikan Taman Pintar sebagai destinasi utama karyawisata mereka."
+                ],
+                correctIndex: 0 // "Taman Pintar merupakan tempat wisata edukasi..."
+            },
+            {
+                location: "Sentra Gudeg Wijilan",
+                sentences: [
+                    "Selain manis, masakan ini juga memiliki rasa gurih yang berasal dari bumbu santan kelapa yang kental.",
+                    "Masakan khas ini biasanya disajikan lengkap dengan telur bacem, tahu, tempe, dan sambal goreng krecek.",
+                    "Gudeg Wijilan merupakan salah satu kuliner tradisional khas Yogyakarta yang paling digemari wisatawan.",
+                    "Banyak wisatawan rela mengantre panjang di kawasan Wijilan hanya demi mencicipi kelezatan gudeg legendaris ini."
+                ],
+                correctIndex: 2 // "Gudeg Wijilan merupakan salah satu kuliner..."
+            },
+            {
+                location: "Malioboro",
+                sentences: [
+                    "Jalan Malioboro menyajikan suasana khas Yogyakarta yang ramah dan selalu ramai dikunjungi orang.",
+                    "Di sepanjang trotoarnya, terdengar alunan musik gamelan dari para pengamen jalanan yang kreatif.",
+                    "Para wisatawan juga bisa menaiki andong wisata atau becak tradisional untuk mengelilingi daerah sekitar.",
+                    "Berbagai toko oleh-oleh dan pedagang kaki lima juga berjejer rapi menawarkan cinderamata khas Jogja."
+                ],
+                correctIndex: 0 // "Jalan Malioboro menyajikan suasana khas..."
+            }
+        ];
+
+        let gameCurrentLevel = 0;
+        let gameScore = 0;
+        let gameAnswered = false;
+
+        function resetGame() {
+            gameCurrentLevel = 0;
+            gameScore = 0;
+            gameAnswered = false;
+            document.getElementById('game-score').textContent = gameScore;
+            document.getElementById('game-success-screen').classList.add('hidden');
+            document.getElementById('game-box').classList.remove('hidden');
+            loadGameLevel();
+        }
+
+        function loadGameLevel() {
+            gameAnswered = false;
+            document.getElementById('game-level').textContent = gameCurrentLevel + 1;
+            document.getElementById('btn-next-game').classList.add('hidden');
+            
+            const feedbackBox = document.getElementById('game-feedback');
+            feedbackBox.classList.add('hidden');
+            feedbackBox.className = "hidden p-4 rounded-xl text-center text-sm font-semibold transition-all mb-4";
+
+            const data = gameData[gameCurrentLevel];
+            document.getElementById('game-location').textContent = data.location;
+
+            const paragraphDiv = document.getElementById('game-paragraph');
+            paragraphDiv.innerHTML = '';
+
+            data.sentences.forEach((sentence, idx) => {
+                const span = document.createElement('span');
+                span.id = `game-s-${idx}`;
+                span.className = "block p-2 rounded-lg cursor-pointer hover:bg-emerald-50 border border-transparent transition-all";
+                span.innerHTML = `🕵️‍♂️ "${sentence}"`;
+                span.onclick = () => selectGameSentence(idx);
+                paragraphDiv.appendChild(span);
+            });
+        }
+
+        function selectGameSentence(index) {
+            if (gameAnswered) return; // Prevent multiple clicks on the same level
+
+            gameAnswered = true;
+            const data = gameData[gameCurrentLevel];
+            const feedbackBox = document.getElementById('game-feedback');
+            feedbackBox.classList.remove('hidden');
+
+            // Reset all sentence styles first
+            data.sentences.forEach((_, idx) => {
+                const el = document.getElementById(`game-s-${idx}`);
+                el.className = "block p-2 rounded-lg border border-transparent opacity-60";
+            });
+
+            const selectedElement = document.getElementById(`game-s-${index}`);
+            const correctElement = document.getElementById(`game-s-${data.correctIndex}`);
+
+            if (index === data.correctIndex) {
+                // Correct Answer
+                playSound('correct');
+                selectedElement.className = "block p-2 rounded-lg bg-emerald-100 border-2 border-emerald-500 font-semibold text-emerald-800";
+                feedbackBox.innerHTML = "🎉 <strong>Hebat, Detektif!</strong> Pilihanmu benar sekali! Kalimat tersebut merangkum topik utama paragraf.";
+                feedbackBox.className = "p-4 rounded-xl text-center text-sm font-semibold text-emerald-800 bg-emerald-100 border border-emerald-300 mb-4";
+                gameScore += 10;
+                document.getElementById('game-score').textContent = gameScore;
+            } else {
+                // Wrong Answer
+                playSound('wrong');
+                selectedElement.className = "block p-2 rounded-lg bg-red-100 border-2 border-red-500 font-semibold text-red-800";
+                correctElement.className = "block p-2 rounded-lg bg-emerald-100 border-2 border-emerald-400 font-semibold text-emerald-800";
+                feedbackBox.innerHTML = "❌ <strong>Kurang Tepat!</strong> Detektif, kalimat utama yang benar disorot warna hijau.";
+                feedbackBox.className = "p-4 rounded-xl text-center text-sm font-semibold text-red-800 bg-red-100 border border-red-300 mb-4";
+            }
+
+            document.getElementById('btn-next-game').classList.remove('hidden');
+        }
+
+        function nextGameLevel() {
+            if (gameCurrentLevel < gameData.length - 1) {
+                gameCurrentLevel++;
+                loadGameLevel();
+            } else {
+                // Game Over Screen
+                playSound('success');
+                document.getElementById('game-box').classList.add('hidden');
+                document.getElementById('game-success-screen').classList.remove('hidden');
+            }
+        }
+
+
+        // --- GEMINI INTEGRATION HELPERS ---
+        const apiKey = ""; // API Key otomatis disediakan oleh Canvas di runtime
+        
+        async function fetchGeminiAPI(payload) {
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+            let delay = 1000;
+            const maxRetries = 3;
+
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (response.status === 429) {
+                        // Throttled: apply exponential backoff
+                        await new Promise(res => setTimeout(res, delay));
+                        delay *= 2;
+                        continue;
+                    }
+
+                    if (!response.ok) {
+                        throw new Error(`API Error: ${response.statusText}`);
+                    }
+
+                    return await response.json();
+                } catch (err) {
+                    if (i === maxRetries - 1) throw err;
+                    await new Promise(res => setTimeout(res, delay));
+                    delay *= 2;
+                }
+            }
+        }
+
+        // --- SUB-NAVIGATION FOR AI LAB ---
+        function switchAiSubTab(tabId) {
+            document.querySelectorAll('.ai-panel').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`ai-sub-${tabId}`).classList.remove('hidden');
+
+            document.querySelectorAll('.ai-sub-tab').forEach(el => {
+                el.classList.remove('bg-purple-600', 'text-white', 'shadow-sm');
+                el.classList.add('bg-slate-100', 'text-slate-700', 'hover:bg-slate-200');
+            });
+
+            const activeBtn = document.getElementById(`btn-ai-${tabId === 'generator' ? 'gen' : 'analyze'}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-slate-100', 'text-slate-700', 'hover:bg-slate-200');
+                activeBtn.classList.add('bg-purple-600', 'text-white', 'shadow-sm');
+            }
+        }
+
+        // --- AI TAB FEATURE A: GENERATE CUSTOM TASK ---
+        let currentAiChallenge = null;
+        let aiChallengeAnswered = false;
+
+        async function generateCustomAITask() {
+            const topicInput = document.getElementById('ai-topic-input');
+            const topic = topicInput.value.trim() || "Yogyakarta";
+            const btnText = document.getElementById('btn-ai-gen-text');
+            const spinner = document.getElementById('ai-gen-spinner');
+
+            // Show loading animation
+            btnText.classList.add('hidden');
+            spinner.classList.remove('hidden');
+            document.getElementById('ai-generated-game-box').classList.add('hidden');
+
+            const payload = {
+                contents: [{ parts: [{ text: `Buat paragraf edukasi untuk kata kunci: "${topic}"` }] }],
+                generationConfig: {
+                    responseMimeType: "application/json",
+                    responseSchema: {
+                        type: "OBJECT",
+                        properties: {
+                            paragraph: { type: "STRING" },
+                            sentences: {
+                                type: "ARRAY",
+                                items: { type: "STRING" }
+                            },
+                            correctIndex: { type: "INTEGER" },
+                            mainIdea: { type: "STRING" }
+                        },
+                        required: ["paragraph", "sentences", "correctIndex", "mainIdea"]
+                    }
+                },
+                systemInstruction: {
+                    parts: [{ text: "Anda adalah guru SD kelas 4 kreatif di SDN Tegalrejo 3 Yogyakarta. Buat sebuah paragraf pendek bertema kata kunci Yogyakarta yang diinput user. Paragraf harus tepat terdiri atas 4 kalimat. Tentukan kalimat utamanya berada di awal (index 0) atau di akhir (index 3) secara acak agar bervariasi. Berikan output berupa JSON yang memisahkan seluruh kalimat ke dalam array, mengidentifikasi index kalimat utama yang benar (0 atau 3), dan merumuskan ide pokok yang diringkas dengan bahasa yang sangat mudah dipahami anak usia 9-10 tahun." }]
+                }
+            };
+
+            try {
+                const result = await fetchGeminiAPI(payload);
+                const text = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+                if (text) {
+                    currentAiChallenge = JSON.parse(text);
+                    renderAiChallenge();
+                } else {
+                    alert("Aduh, Piko gagal meracik tantangan. Coba kata kunci yang lain ya!");
+                }
+            } catch (err) {
+                console.error(err);
+                alert("Koneksi Piko terputus sebentar. Silakan coba klik tombol kembali!");
+            } finally {
+                btnText.classList.remove('hidden');
+                spinner.classList.add('hidden');
+            }
+        }
+
+        function renderAiChallenge() {
+            if (!currentAiChallenge) return;
+
+            aiChallengeAnswered = false;
+            const container = document.getElementById('ai-generated-game-box');
+            const paragraphDiv = document.getElementById('ai-game-paragraph');
+            const feedbackBox = document.getElementById('ai-game-feedback');
+            const expCard = document.getElementById('ai-game-explanation-card');
+
+            // Reset view state
+            container.classList.remove('hidden');
+            feedbackBox.classList.add('hidden');
+            expCard.classList.add('hidden');
+            paragraphDiv.innerHTML = '';
+
+            currentAiChallenge.sentences.forEach((sentence, idx) => {
+                const span = document.createElement('span');
+                span.id = `ai-s-${idx}`;
+                span.className = "block p-2 rounded-lg cursor-pointer hover:bg-purple-50 border border-transparent transition-all text-xs md:text-sm";
+                span.innerHTML = `🕵️‍♂️ "${sentence}"`;
+                span.onclick = () => selectAiSentence(idx);
+                paragraphDiv.appendChild(span);
+            });
+        }
+
+        function selectAiSentence(index) {
+            if (aiChallengeAnswered) return;
+            aiChallengeAnswered = true;
+
+            const correctIdx = currentAiChallenge.correctIndex;
+            const feedbackBox = document.getElementById('ai-game-feedback');
+            const expCard = document.getElementById('ai-game-explanation-card');
+            const expText = document.getElementById('ai-game-explanation-text');
+
+            feedbackBox.classList.remove('hidden');
+            expCard.classList.remove('hidden');
+            expText.innerHTML = `<strong>${currentAiChallenge.mainIdea}</strong>`;
+
+            // Dim out sentences and style correct/wrong ones
+            currentAiChallenge.sentences.forEach((_, idx) => {
+                const el = document.getElementById(`ai-s-${idx}`);
+                el.className = "block p-2 rounded-lg border border-transparent opacity-60 text-xs md:text-sm";
+            });
+
+            const selectedElement = document.getElementById(`ai-s-${index}`);
+            const correctElement = document.getElementById(`ai-s-${correctIdx}`);
+
+            if (index === correctIdx) {
+                playSound('correct');
+                selectedElement.className = "block p-2 rounded-lg bg-emerald-100 border-2 border-emerald-500 font-semibold text-emerald-800 text-xs md:text-sm";
+                feedbackBox.innerHTML = "🎉 <strong>Luar Biasa, Detektif Hebat!</strong> Jawabanmu tepat sekali! Itu adalah kalimat utamanya.";
+                feedbackBox.className = "mt-4 p-4 rounded-xl text-center text-sm font-semibold text-emerald-800 bg-emerald-100 border border-emerald-300";
+            } else {
+                playSound('wrong');
+                selectedElement.className = "block p-2 rounded-lg bg-red-100 border-2 border-red-500 font-semibold text-red-800 text-xs md:text-sm";
+                correctElement.className = "block p-2 rounded-lg bg-emerald-100 border-2 border-emerald-400 font-semibold text-emerald-800 text-xs md:text-sm";
+                feedbackBox.innerHTML = "❌ <strong>Hampir Sempurna!</strong> Kamu memilih kalimat penjelas. Kalimat utama yang benar disorot hijau.";
+                feedbackBox.className = "mt-4 p-4 rounded-xl text-center text-sm font-semibold text-red-800 bg-red-100 border border-red-300";
+            }
+        }
+
+        // --- AI TAB FEATURE B: DETEKTIF TANYA PIKO (ANALYZE TEXT) ---
+        async function analyzeTextWithAI() {
+            const textToAnalyze = document.getElementById('ai-text-to-analyze').value.trim();
+            if (!textToAnalyze) {
+                alert("Detektif, harap masukkan paragraf yang ingin kamu bedah terlebih dahulu!");
+                return;
+            }
+
+            const btnText = document.getElementById('btn-ai-analyze-text');
+            const spinner = document.getElementById('ai-analyze-spinner');
+            const outputContainer = document.getElementById('ai-analysis-output-container');
+            const markdownContainer = document.getElementById('ai-analysis-markdown');
+
+            // Show loading state
+            btnText.classList.add('hidden');
+            spinner.classList.remove('hidden');
+            outputContainer.classList.add('hidden');
+
+            const payload = {
+                contents: [{ parts: [{ text: `Tolong analisis paragraf berikut ini: \n"${textToAnalyze}"` }] }],
+                systemInstruction: {
+                    parts: [{ text: "Anda adalah Piko, burung hantu maskot cerdas dari SDN Tegalrejo 3 Yogyakarta. Bantu anak kelas 4 SD memahami paragraf yang mereka masukkan. Analisis dan pecah paragraf tersebut menjadi: 1. Kalimat Utama (mana kalimatnya dan kenapa), 2. Ide Pokok (gagasannya apa), 3. Kalimat Penjelas (sebutkan apa saja). Jawab dengan format markdown yang indah, ramah anak, interaktif, penuh pujian dan dorongan semangat, sertakan emoji yang lucu." }]
+                }
+            };
+
+            try {
+                const result = await fetchGeminiAPI(payload);
+                const generatedText = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+                if (generatedText) {
+                    outputContainer.classList.remove('hidden');
+                    // Render using Marked JS safely
+                    markdownContainer.innerHTML = marked.parse(generatedText);
+                    markdownContainer.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    alert("Aduh, Piko kesulitan membaca paragraf tersebut. Coba periksa kembali ketikannya ya!");
+                }
+            } catch (err) {
+                console.error(err);
+                alert("Gagal menyambungkan ke otak Piko. Pastikan koneksi internet aktif!");
+            } finally {
+                btnText.classList.remove('hidden');
+                spinner.classList.add('hidden');
+            }
+        }
+
+
+        // --- KUIS EVALUASI DATA & LOGIC ---
+        const quizQuestions = [
+            {
+                text: "Yogyakarta memiliki makanan khas yang sangat manis bernama Gudeg. Makanan ini dibuat dari nangka muda yang dimasak berjam-jam dengan santan. Rasa gudeg sangat lezat sehingga banyak digemari orang.",
+                question: "1. Kalimat utama paragraf di atas terletak di...",
+                options: [
+                    "Awal paragraf (Deduktif)",
+                    "Akhir paragraf (Induktif)",
+                    "Tengah paragraf",
+                    "Awal dan akhir paragraf"
+                ],
+                correct: 0,
+                explanation: "Kalimat utama terletak di awal paragraf: 'Yogyakarta memiliki makanan khas yang sangat manis bernama Gudeg.'"
+            },
+            {
+                text: "Yogyakarta memiliki makanan khas yang sangat manis bernama Gudeg. Makanan ini dibuat dari nangka muda yang dimasak berjam-jam dengan santan. Rasa gudeg sangat lezat sehingga banyak digemari orang.",
+                question: "2. Ide pokok paragraf di atas adalah...",
+                options: [
+                    "Cara memasak sayur nangka muda.",
+                    "Gudeg adalah makanan khas Yogyakarta.",
+                    "Rasa manis sayur santan kelapa.",
+                    "Bahan-bahan membuat bumbu gudeg."
+                ],
+                correct: 1,
+                explanation: "Ide pokok diringkas dari kalimat utama, yaitu 'Gudeg adalah makanan khas Yogyakarta.'"
+            },
+            {
+                text: "Setiap hari Minggu, Alun-Alun Kidul Yogyakarta dipenuhi warga. Ada anak-anak yang menyewa odong-odong berhias lampu warna-warni. Beberapa orang tua asyik duduk santai sambil menikmati wedang ronde hangat. Anak remaja sibuk berfoto-foto di antara dua beringin kembar yang megah.",
+                question: "3. Gagasan utama paragraf tersebut membahas tentang...",
+                options: [
+                    "Beringin kembar legendaris di Jogja.",
+                    "Permainan odong-odong lampu hias.",
+                    "Kandungan rasa hangat wedang ronde.",
+                    "Aktivitas warga di Alun-Alun Kidul Jogja."
+                ],
+                correct: 3,
+                explanation: "Seluruh kalimat penjelas menceritakan kegiatan orang-orang di Alun-Alun Kidul Yogyakarta pada hari Minggu."
+            },
+            {
+                text: "Setiap hari Minggu, Alun-Alun Kidul Yogyakarta dipenuhi warga. Ada anak-anak yang menyewa odong-odong berhias lampu warna-warni. Beberapa orang tua asyik duduk santai sambil menikmati wedang ronde hangat. Anak remaja sibuk berfoto-foto di antara dua beringin kembar yang megah.",
+                question: "4. Manakah kalimat penjelas yang tepat dari paragraf di atas?",
+                options: [
+                    "Setiap hari Minggu, Alun-Alun Kidul Yogyakarta dipenuhi warga.",
+                    "Yogyakarta merupakan kota pelajar di Indonesia.",
+                    "Beberapa orang tua asyik duduk santai sambil menikmati wedang ronde hangat.",
+                    "Alun-alun Jogja terletak dekat stasiun kereta api."
+                ],
+                correct: 2,
+                explanation: "Pilihan ketiga ada di dalam teks dan berfungsi menjelaskan aktivitas warga (orang tua) di alun-alun."
+            },
+            {
+                text: "Salah satu cara menentukan ide pokok paragraf adalah membaca keseluruhan kalimat di dalamnya. Setelah membaca, carilah kalimat utama yang paling penting. Kemudian, ringkaslah isi kalimat utama tersebut menjadi inti tulisan yang lebih padat.",
+                question: "5. Apa ide pokok paragraf instruksional di atas?",
+                options: [
+                    "Langkah-langkah menemukan ide pokok paragraf.",
+                    "Tujuan membuat ringkasan yang panjang.",
+                    "Cara menghitung jumlah kata dalam teks.",
+                    "Mengidentifikasi letak tanda baca yang benar."
+                ],
+                correct: 0,
+                explanation: "Seluruh isi paragraf menjabarkan proses dan cara untuk mendapatkan gagasan/ide pokok."
+            }
+        ];
+
+        let quizCurrentIndex = 0;
+        let quizScore = 0;
+        let quizAnswered = false;
+
+        function resetQuiz() {
+            quizCurrentIndex = 0;
+            quizScore = 0;
+            quizAnswered = false;
+            document.getElementById('quiz-result-box').classList.add('hidden');
+            document.getElementById('quiz-question-box').classList.remove('hidden');
+            loadQuizQuestion();
+        }
+
+        function loadQuizQuestion() {
+            quizAnswered = false;
+            document.getElementById('btn-next-quiz').classList.add('hidden');
+            document.getElementById('quiz-feedback-text').textContent = '';
+            document.getElementById('quiz-progress').textContent = `${quizCurrentIndex + 1}/${quizQuestions.length}`;
+
+            const data = quizQuestions[quizCurrentIndex];
+            document.getElementById('quiz-text').innerHTML = `📖 "${data.text}"`;
+            document.getElementById('quiz-question-text').textContent = data.question;
+
+            const optionsDiv = document.getElementById('quiz-options');
+            optionsDiv.innerHTML = '';
+
+            data.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "quiz-opt-btn w-full text-left p-4 rounded-xl border-2 border-slate-200 bg-white hover:bg-slate-50 transition-all font-semibold text-gray-700 text-xs md:text-sm flex items-center justify-between";
+                btn.innerHTML = `<span>${opt}</span> <i class="fa-regular fa-circle text-gray-400"></i>`;
+                btn.onclick = () => selectQuizOption(idx);
+                optionsDiv.appendChild(btn);
+            });
+        }
+
+        function selectQuizOption(index) {
+            if (quizAnswered) return;
+            quizAnswered = true;
+
+            const data = quizQuestions[quizCurrentIndex];
+            const optionButtons = document.querySelectorAll('.quiz-opt-btn');
+            const feedbackText = document.getElementById('quiz-feedback-text');
+
+            optionButtons.forEach((btn, idx) => {
+                btn.disabled = true;
+                if (idx === data.correct) {
+                    btn.classList.remove('border-slate-200', 'bg-white');
+                    btn.classList.add('border-emerald-500', 'bg-emerald-50', 'text-emerald-900');
+                    btn.querySelector('i').className = "fa-solid fa-circle-check text-emerald-600";
+                } else if (idx === index) {
+                    btn.classList.remove('border-slate-200', 'bg-white');
+                    btn.classList.add('border-red-500', 'bg-red-50', 'text-red-900');
+                    btn.querySelector('i').className = "fa-solid fa-circle-xmark text-red-600";
+                } else {
+                    btn.classList.add('opacity-50');
+                }
+            });
+
+            if (index === data.correct) {
+                playSound('correct');
+                quizScore += 20;
+                feedbackText.innerHTML = "🎯 Benar sekali! Hebat!";
+                feedbackText.className = "text-sm font-bold text-emerald-600";
+            } else {
+                playSound('wrong');
+                feedbackText.innerHTML = "❌ Kurang tepat, ayo coba lagi!";
+                feedbackText.className = "text-sm font-bold text-red-600";
+            }
+
+            document.getElementById('btn-next-quiz').classList.remove('hidden');
+        }
+
+        function nextQuiz() {
+            if (quizCurrentIndex < quizQuestions.length - 1) {
+                quizCurrentIndex++;
+                loadQuizQuestion();
+            } else {
+                showQuizResult();
+            }
+        }
+
+        function showQuizResult() {
+            playSound('success');
+            document.getElementById('quiz-question-box').classList.add('hidden');
+            document.getElementById('quiz-result-box').classList.remove('hidden');
+
+            document.getElementById('quiz-final-score').textContent = quizScore;
+
+            const evalMsg = document.getElementById('quiz-evaluation-message');
+            const emoji = document.getElementById('result-emoji');
+            
+            if (quizScore >= 80) {
+                emoji.textContent = "🏆";
+                evalMsg.innerHTML = "<strong>Hebat Luar Biasa!</strong> Kamu berhasil menguasai materi Ide Pokok dan Kalimat Utama dengan sangat baik. Pertahankan prestasimu di SDN Tegalrejo 3 Yogyakarta!";
+            } else if (quizScore >= 60) {
+                emoji.textContent = "👍";
+                evalMsg.innerHTML = "<strong>Bagus Sekali!</strong> Kamu sudah memahami dasar-dasar kalimat utama. Ayo baca buku sedikit lebih giat lagi biar nilaimu sempurna!";
+            } else {
+                emoji.textContent = "💪";
+                evalMsg.innerHTML = "<strong>Jangan Menyerah!</strong> Masih butuh sedikit latihan membaca paragraf dengan pelan-pelan. Ayo baca lagi materinya dan ulangi latihan kuis ini ya!";
+            }
+        }
+    </script>
+</body>
+</html>
